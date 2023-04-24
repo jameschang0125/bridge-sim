@@ -13,18 +13,27 @@ LIB = libdds.a -lboost_system -lboost_thread -lpthread
 
 # TODO: sep compile
 LIBFILES = dll.h libdds.a portab.h
-OFILES = main.o gen.o
+UTIL = util.hpp exception.hpp
+INCL = $(LIBFILES) $(UTIL)
+OFILES = main.o gen.o loader.o util.o
 
 all: $(OFILES)
 	$(CC) -o main $(OFILES) $(LIB)
 
-gen: $(LIBFILES) gen.cpp gen.hpp
+gen: $(INCL) gen.cpp gen.hpp
 	$(CC) -c gen.cpp
 
-main: $(LIBFILES) gen.hpp
+loader: $(INCL) loader.cpp loader.hpp
+	$(CC) -c loader.cpp
+
+main: $(INCL) gen.hpp
 	$(CC) -c main.cpp
-test: 
-	$(CC) $(TEST_FLAGS) -o main main.cpp gen.cpp $(LIB) && clear && time ./main
+
+util: util.cpp util.hpp
+	$(CC) -c util.cpp
+
+test: $(OFILES)
+	$(CC) $(TEST_FLAGS) -o main $(OFILES) $(LIB)
 
 .PHONY: clean
 clean:

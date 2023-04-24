@@ -1,0 +1,39 @@
+--- generating deals and results ---
+0
+32
+64
+96
+--- finished ---
+Results matched!
+--- display deal ---
+N
+A942
+AT984
+Q
+653
+
+E
+8763
+K63
+K5
+QT84
+
+S
+J
+2
+AJT98632
+AJ7
+
+W
+KQT5
+QJ75
+74
+K92
+--------------------
+--- display result ---
+	S	H	D	C	N	
+N	6	7	11	7	5	
+E	6	6	2	6	2	
+S	6	7	11	7	6	
+W	6	5	2	6	2	
+----------------------

@@ -15,6 +15,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <typeinfo>
+#include "exception.hpp"
 #define ll long long
 #define ull unsigned long long
 #define pss std::pair<short, short>
@@ -41,7 +42,7 @@ class HandGenerator{
 public:
     HandGenerator(const std::string sd);
     ~HandGenerator();
-    void gen(ddTableDeals &tableDeals, ddTablesRes &tablep);
+    void gen(ddTableDeals &deals, ddTablesRes &res);
     void refresh();
     void fullgen(std::string &resp, std::string &dealp, int T = 1000, int showEvery = -1);
 private:
@@ -50,15 +51,3 @@ private:
     Hasher hasher;
     pss arr[N_deck];        // use to shuffle
 };
-
-/*
-class DataManager{
-public:
-    DataManager();
-    ~DataManager();
-    void path(std::string id);
-    void dump(std::string id);
-    void load(std::string id);
-    void gen(std::string id, ll N_deal);
-};
-*/
