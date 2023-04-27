@@ -1,3 +1,6 @@
 *.o
 main
+test
+data
+tmp
 dump.txt

@@ -11,11 +11,11 @@ CC = g++ $(COMPILE_FLAGS)
 TEST_FLAGS = -fsanitize=address
 LIB = libdds.a -lboost_system -lboost_thread -lpthread
 
-# TODO: sep compile
 LIBFILES = dll.h libdds.a portab.h
 UTIL = util.hpp exception.hpp
 INCL = $(LIBFILES) $(UTIL)
-OFILES = main.o gen.o loader.o util.o
+OFILES_EXCL = gen.o loader.o util.o
+OFILES = main.o $(OFILES_EXCL)
 
 all: $(OFILES)
 	$(CC) -o main $(OFILES) $(LIB)
@@ -32,9 +32,9 @@ main: $(INCL) gen.hpp
 util: util.cpp util.hpp
 	$(CC) -c util.cpp
 
-test: $(OFILES)
-	$(CC) $(TEST_FLAGS) -o main $(OFILES) $(LIB)
+test: $(OFILES_EXCL)
+	$(CC) $(TEST_FLAGS) -o test test.cpp $(OFILES_EXCL) $(LIB)
 
 .PHONY: clean
 clean:
-	rm main *.o dump.txt
+	rm main test *.o dump.txt
