@@ -29,7 +29,7 @@ void HandGenerator::gen(ddTableDeals &deals, ddTablesRes &res){
 
 void HandGenerator::fullgen(std::string &resp, std::string &dealp, int T, int showEvery){
     constexpr int batch = 32;
-    constexpr int rr = 1000; // refresh every 1000 deals
+    constexpr int rr = 10000; // refresh every 10000 deals
     if(showEvery < 0) showEvery = rr;
     
     ddTableDeals TD; 
