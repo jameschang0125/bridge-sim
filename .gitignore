@@ -1,6 +1,7 @@
-*.o
-main
-test
 data
 tmp
-dump.txt
+cpp/*.o
+cpp/main
+cpp/test
+cpp/dump.txt
+py/test.py
