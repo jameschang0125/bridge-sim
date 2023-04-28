@@ -12,5 +12,5 @@ int main(){
     std::string seed = resp + dealp + "this1sacuterandomseedouowo";
     
     HandGenerator HG(seed);
-    HG.fullgen(resp, dealp, 10000000);
+    HG.fullgen(resp, dealp, 100000);
 }

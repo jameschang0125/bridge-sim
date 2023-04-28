@@ -1,4 +1,4 @@
-CC_BOOST_LINK	= -I /home/James_Chang/install/boost/include/ -L /home/James_Chang/install/boost/lib/
+CC_BOOST_LINK	= 
 
 THREAD_COMPILE	= -fopenmp $(THREAD_LINK)
 THREAD_LINK	= $(CC_BOOST_LINK)
