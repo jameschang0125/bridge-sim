@@ -20,6 +20,22 @@ class HandEvaluator:
             return [self.suit(deal, i) for i in range(4)]
         return sum([sum([self._bitCount(deal, dir, i, 10 + j) * j for j in range(4)]) for i in range(4)])
 
+    def isbal(self, deal, dir = 0): # strict
+        x = sorted(self.suit(deal, dir))
+        if x[3] == 4:
+            return x[0] > 1
+        if x[3] == 5:
+            return x[0] == 2 and x[1] == 3  # 5332
+        return False
+
+    def stopper(self, deal, dir = 0, suit = 0):
+        # A, Kx, Qxx+, Jxxx+
+        length = self._suit(deal, dir, suit)
+        return self._bitCount(deal, dir, suit, 14) or \
+            (self._bitCount(deal, dir, suit, 13) and length >= 2) or \
+            (self._bitCount(deal, dir, suit, 12) and length >= 3) or \
+            (self._bitCount(deal, dir, suit, 11) and length >= 4)
+
     def suit(self, deal, dir = None):
         if dir is None:
             return np.array([self.suit(deal, i, suit) for i in range(4)])
@@ -50,6 +66,7 @@ class HandEvaluator:
 
     def __isHS(self, deal, dir = 0, suit = 0):
         return self._suit(deal, dir, suit) <= 1 or self._bitCount(deal, dir, suit, 14) or self._bitCount(deal, dir, suit, 13)
+
 
 class CombEvaluator(HandEvaluator):
     '''

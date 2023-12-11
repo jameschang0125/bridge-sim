@@ -23,5 +23,8 @@ class Loader:
             for j in range(4)] for i in range(4)] for n in range(N)])
     
     def load(self, N = 1):
+        '''
+        deal[dir][suit], res[suit][dir]
+        '''
         return self.__loaddeal(N), self.__loadres(N)
         
