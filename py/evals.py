@@ -17,8 +17,8 @@ class HandEvaluator:
 
     def HCP(self, deal, dir = None):
         if dir is None:
-            return [self.suit(deal, i) for i in range(4)]
-        return sum([sum([self._bitCount(deal, dir, i, 10 + j) * j for j in range(4)]) for i in range(4)])
+            return [self.HCP(deal, i) for i in range(4)]
+        return sum([sum([self._bitCount(deal, dir, i, 10 + j) * j for j in range(1, 5)]) for i in range(4)])
 
     def isbal(self, deal, dir = 0): # strict
         x = sorted(self.suit(deal, dir))
